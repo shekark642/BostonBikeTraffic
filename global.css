@@ -1,0 +1,114 @@
+body {
+    font: 100%/1.5 system-ui, sans-serif;
+    display: flex;
+    flex-flow: column;
+    max-width: 80em;
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 1em;
+  }
+
+
+  html, body {
+    margin: 0;
+    padding: 5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+  }
+     
+  #map {
+    width: 100%;    /* Adjust width to your desired size */
+    height: 100%;   /* Adjust height to your desired size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+    border-radius: 8px; /* Optional: rounded corners */
+  }
+
+  #map svg {
+
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  circle {
+    pointer-events: auto; /* Ensures tooltips work */
+    --color-departures: rgb(254, 250, 2);
+    --color-arrivals: rgb(240, 19, 19);
+    --color: color-mix(
+      in oklch,
+      var(--color-departures) calc(100% * var(--departure-ratio)),
+      var(--color-arrivals)
+    );
+    fill: var(--color);
+  }
+
+  
+  header {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+}
+
+.time-filter {
+    margin-left: auto; /* Push the entire time filter to the right */
+    display: flex;
+    flex-direction: column; /* Stack slider, time, and (any time) */
+    align-items: flex-end; /* Align everything to the right */
+}
+
+time, em {
+    display: block; /* Ensures time and (any time) are on their own lines */
+}
+
+em {
+    color: gray;
+    font-style: italic;
+}
+
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between legend items */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin-top: 10px; /* Space between map and legend */
+}
+
+.legend-title {
+  font-weight: bold;
+  color: gray;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between circle and text */
+}
+
+.legend-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.departures {
+  background-color: #f1f904; /* Blue */
+}
+
+.balanced {
+  background-color: #d6823d; /* Purple */
+}
+
+.arrivals {
+  background-color: #f80202; /* Orange */
+}
